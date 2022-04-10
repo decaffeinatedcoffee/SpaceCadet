@@ -143,7 +143,7 @@ function apod(){
        .setDescription(apod.explanation)
        .setTimestamp()
           let a = client.channels.cache.get('962516472381452339');
-             a.send({ embeds: [embedapod] });
+             a.send({content:"<@&962583936901459988>",embeds: [embedapod] });
             })
 }
 
