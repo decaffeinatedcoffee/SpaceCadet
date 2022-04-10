@@ -2,6 +2,7 @@ const { channel } = require("diagnostics_channel");
 const Discord = require("discord.js");
 let process = require('process');
 let fetch = require('node-fetch')
+const { MessageActionRow, MessageButton} = require('discord.js');
 const os = require("os");
 var express = require('express');
 var crg = require('country-reverse-geocoding').country_reverse_geocoding();
@@ -121,7 +122,37 @@ client.on("messageCreate", (msg) => {
               msg.channel.send({ embeds: [embedapod] });
             })
     }
+
+    if (msg.content.toLowerCase().startsWith("eval")) {
+      (async () => {
+        if (msg.author.id == process.env.OWNERID) {
+          var result = msg.content.split(" ").slice(1).join(" ");
+          let evaled = await eval(result)
+            .catch(function (err) {
+              msg.reply("❌ Error! ```" + err + "```");
+            })
+        } else {
+          msg.reply("❌ only the bot owner can use this!");
+          console.log(msg.author.tag + " on " + msg.guild.name + " tried to use eval command!");
+        }
+      })()
+    }
 })
+
+client.on('interactionCreate', interaction => {
+	if (!interaction.isButton()) return;
+	if(interaction.customId == "apod"){
+    let apodrole = interaction.guild.roles.cache.get("962583936901459988");
+    let user = interaction.guild.members.cache.get(interaction.user.id);
+    if(!user.roles.cache.some(role => role.id === apodrole.id)){
+    user.roles.add(apodrole)
+    interaction.reply({ephemeral: true, content:"The role was added successfully!"});
+    }else{
+      user.roles.remove(apodrole)
+      interaction.reply({ephemeral: true, content:"The role was removed successfully!"});
+    }
+  }
+});
 
 function apod(){
     fetch("https://api.nasa.gov/planetary/apod?api_key=" + process.env.NASAKEY)
@@ -145,6 +176,9 @@ function apod(){
           let a = client.channels.cache.get('962516472381452339');
              a.send({content:"<@&962583936901459988>",embeds: [embedapod] });
             })
+
+
+
 }
 
 client.login(process.env.DISCORDTOKEN);
