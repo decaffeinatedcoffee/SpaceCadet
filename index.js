@@ -105,9 +105,15 @@ client.on("messageCreate", (msg) => {
           return apod.json();
         })
         .then(function (apod) {       
+        var author;
+       if(apod.copyright){
+       author = apod.copyright;
+         }else{
+         author = "NASA";
+         }
        const embedapod = new Discord.MessageEmbed()
        .setTitle(apod.title)
-       .setAuthor("Author: " + apod.copyright, "")
+       .setAuthor("Author: " + author, "")
        .setColor('#05204a')
        .setImage(apod.hdurl)
        .setDescription(apod.explanation)
@@ -123,9 +129,15 @@ function apod(){
           return apod.json();
         })
         .then(function (apod) {       
+        var author;
+       if(apod.copyright){
+       author = apod.copyright;
+         }else{
+         author = "NASA";
+         }
        const embedapod = new Discord.MessageEmbed()
        .setTitle(apod.title)
-       .setAuthor("Author: " + apod.copyright, "")
+       .setAuthor("Author: " + author, "")
        .setColor('#05204a')
        .setImage(apod.hdurl)
        .setDescription(apod.explanation)
