@@ -30,7 +30,8 @@ var month;
 var year;
 
 client.on("ready", (client) => {
-setTime();                     
+setTime();  
+keepBotAlive();                   
 });
 
 function setTime() {
@@ -182,3 +183,19 @@ function apod(){
 }
 
 client.login(process.env.DISCORDTOKEN);
+
+
+
+app.get('/', function (req, res) {
+  res.sendFile('index.html', {root: './WebPage'});
+});
+
+
+server.listen(process.env.PORT || 5000, () => {
+  console.log("Listening Ports 5000 and " + process.env.PORT)
+})
+
+function keepBotAlive() {
+  fetch('https://spacecadetproject.herokuapp.com/')  //////////////Its cause i need a worked dyno, but worker dynos cant handle web requests, i should fix it on next versions
+  setTimeout(keepBotAlive, 600000)
+}
