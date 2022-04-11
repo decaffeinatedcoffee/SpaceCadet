@@ -2,9 +2,9 @@
   "name": "spacecadet",
   "version": "1.0.0",
   "description": "",
-  "main": "discord_bot/index.js",
+  "main": "Discord_Bot/index.js",
   "scripts": {
-    "start": "node discord_bot/index.js"
+    "start": "node Discord_Bot/index.js"
   },
   "author": "decaffeinatedcoffee",
   "license": "ISC",
