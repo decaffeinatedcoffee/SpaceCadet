@@ -1,0 +1,32 @@
+{
+  "name": "spacecadet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "discord_bot/index.js",
+  "scripts": {
+    "start": "node discord_bot/index.js"
+  },
+  "author": "decaffeinatedcoffee",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.5.3",
+    "@discordjs/voice": "^0.7.5",
+    "@keyv/mongo": "^1.1.0",
+    "cors": "^2.8.5",
+    "country-reverse-geocoding": "^0.2.2",
+    "discord.js": "^13.3.1",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^4.4.0",
+    "http": "^0.0.1-security",
+    "keyv": "^4.0.4",
+    "libsodium": "^0.7.9",
+    "libsodium-wrappers": "^0.7.9",
+    "moment-timezone": "^0.5.34",
+    "node-fetch": "^2.6.7",
+    "nodejs": "0.0.0",
+    "socket.io": "^4.4.1"
+  }
+}
