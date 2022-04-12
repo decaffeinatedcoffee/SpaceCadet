@@ -187,9 +187,26 @@ client.login(process.env.DISCORDTOKEN);
 
 
 app.get('/', function (req, res) {
-  res.sendFile('index.html', {root: './WebPage'});
+  (async () => {
+  let waiting = await keyv.get("waitlist")
+  if(!waiting){
+    waiting = 0;
+  }
+  res.render('index',  { totalwait: waiting });
+})();
 });
 
+app.get('/wait', function (req, res) {
+  (async () => {
+  let waiting = await keyv.get("waitlist")
+  if(!waiting){
+    waiting = 0;
+  }
+  waiting = waiting + 1;
+  await keyv.set("waitlist", waiting)
+  res.send("done")
+})();
+});
 
 server.listen(process.env.PORT || 5000, () => {
   console.log("Listening Ports 5000 and " + process.env.PORT)
@@ -198,4 +215,5 @@ server.listen(process.env.PORT || 5000, () => {
 function keepBotAlive() {
   fetch('https://spacecadetproject.herokuapp.com/')  //////////////Its cause i need a worked dyno, but worker dynos cant handle web requests, i should fix it on next versions
   setTimeout(keepBotAlive, 600000)
+
 }
