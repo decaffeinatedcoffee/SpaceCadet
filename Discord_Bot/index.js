@@ -34,6 +34,7 @@ setTime();
 keepBotAlive();                   
 });
 
+
 function setTime() {
     let datebase = new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
     date = new Date(datebase)
