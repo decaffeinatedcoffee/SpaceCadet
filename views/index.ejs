@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💫</text></svg>">
+    <title>SpaceCadet Project</title>
+</head>
+<style>
+html{
+    background-image:url('https://github.com/decaffeinatedcoffee/SpaceCadet/blob/main/views/assets/background.jpg?raw=true');
+        background-position: center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+       height: calc(100vh);
+    }
+    
+        body {           
+        margin: 0;
+        padding: 0;
+        overflow-y: hidden;
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        }
+ 
+        #github{
+            margin-top: 5%;
+        }
+        @media(max-width: 700px){
+        html {
+        height: 120%;
+        }      
+        #github{
+            margin-top: 30%;
+        }
+    }
+    #bright_effect{
+        background:rgba(0,0,0,0.3);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        }
+
+        #button{
+            display: block;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid white;
+            color: white;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 50px;
+            height: 70px;
+            width: 200px;
+            cursor: pointer;
+        }
+        #button:hover{
+            font-size: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid white;
+        }
+       #waiting{
+        display: block;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid white;
+            color: white;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 50px;
+            height: 70px;
+            width: 200px;
+            cursor: pointer;
+       }
+       #waiting:hover{
+            font-size: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid white;
+        }
+    </style>
+<body>
+
+    <div id="bright_effect"> 
+        <div id="page1">
+        <p style="text-align: center; font-size: 40px; margin-top: 14%;" id="title1">The SpaceCadet is coming soon</p>
+   <button id="button" onclick="show();">Show me</button>
+   <p id="about" style="text-align: center;"></p>
+    </div>
+    <div id="page2">
+        <div id="banner1" style="display: none;">
+     <p style="text-align: center; font-size: 40px; margin-top: 14%;">What is the SpaceCadet Project?</p>
+     <p style="text-align: center; font-size: 20px;">It's a website and Discord Community where you can see curiosities <br> about astronomy and follow all the space missions</p>
+   <div>
+     <button  onclick="back(0)" style="background-color: rgba(255, 255, 255, 0.1); color: white;font-size: 25px; border: 1px solid white; margin-left:5%; float:left; border-radius: 50px;  height: 60px; width: 60px;">←</button>
+    <button   onclick="go(2)" style="background-color: rgba(255, 255, 255, 0.1); color: white;font-size: 25px; border: 1px solid white;  margin-right:5%; float:right; border-radius: 50px;  height: 60px; width: 60px;">→</button>
+</div>
+    </div>
+    <div id="banner2" style="display: none;">
+        <p style="text-align: center; font-size: 40px; margin-top: 14%;">Who can join the Discord community?</p>
+        <p style="text-align: center; font-size: 20px;">Everyone who likes things related to astronomy and space missions, <br> or who just needs to do a school project</p>
+        <div>
+            <button  onclick="back(1)" style="background-color: rgba(255, 255, 255, 0.1); color: white;font-size: 25px; border: 1px solid white; margin-left:5%; float:left; border-radius: 50px;  height: 60px; width: 60px;">←</button>
+           <button   onclick="go(3)" style="background-color: rgba(255, 255, 255, 0.1); color: white;font-size: 25px; border: 1px solid white;  margin-right:5%; float:right; border-radius: 50px;  height: 60px; width: 60px;">→</button>
+       </div>  
+    </div>
+       <div id="banner3" style="display: none;">
+        <p style="text-align: center; font-size: 40px; margin-top: 14%;">When i'll be able to join?</p>
+        <p style="text-align: center; font-size: 20px;">So far, we are not sure about dates, but we hope soon</p>
+        <div>
+            <button  onclick="back(2)" style="background-color: rgba(255, 255, 255, 0.1); color: white;font-size: 25px; border: 1px solid white; margin-left:5%; float:left; border-radius: 50px;  height: 60px; width: 60px;">←</button>
+           <button   onclick="go(4)" style="background-color: rgba(255, 255, 255, 0.1); color: white;font-size: 25px; border: 1px solid white;  margin-right:5%; float:right; border-radius: 50px;  height: 60px; width: 60px;">→</button>
+       </div>
+       </div>
+       <div id="banner4" style="display: none;">
+        <p style="text-align: center; font-size: 40px; margin-top: 14%;">And what can i do now?</p>
+        <p style="text-align: center; font-size: 20px;">By now, you can follow the project progress on GitHub</p>
+        <div>
+            <button  onclick="back(3)" style="background-color: rgba(255, 255, 255, 0.1); color: white;font-size: 25px; border: 1px solid white; margin-left:5%; float:left; border-radius: 50px;  height: 60px; width: 60px;">←</button>
+         </div>  
+         <div id="github">
+        <p onclick="location.replace('https://github.com/decaffeinatedcoffee/spacecadet')" style="text-align:center; font-size: 20px; cursor: pointer;">
+        <img src="https://github.com/decaffeinatedcoffee/SpaceCadet/blob/main/views/assets/githublogo.png?raw=truehttps://github.com/decaffeinatedcoffee/SpaceCadet/blob/main/views/assets/githublogo.png?raw=true" alt="" style="block-size: 40px; display: block; margin: 0 auto; filter: invert();">SpaceCadet</p>
+    </div>
+    <p style="text-align: center; margin-top: 5%;">You can also click the waiting button to help us</p>
+    <button onclick="wait()" id="waiting">I'm waiting</button>
+    <p style="text-align: center;" id="waitingnum"><b><%-totalwait%></b> people waiting</p>
+</div>
+    </div>
+</div>
+
+</body>
+
+<script>
+var counter = <%-totalwait%>;
+if(localStorage.getItem("waitinglist")){
+    document.getElementById("waiting").innerText = "You're waiting"
+    document.getElementById("waiting").title = "You are waiting"
+}
+    function wait(){
+        counter = counter + 1
+    if(!localStorage.getItem("waitinglist")){
+    localStorage.setItem("waitinglist", true);
+    fetch("/wait");
+    document.getElementById("waiting").innerText = "You're waiting"
+    document.getElementById("waiting").title = "You are waiting"
+    document.getElementById("waitingnum").innerHTML = "<b>" + counter + "</b> people waiting</p>"
+    }
+    }
+function show(){
+ navigator.vibrate(180);
+document.getElementById("page1").style.display = "none";
+document.getElementById("banner1").style.display = "block"
+}
+function go(page){
+ navigator.vibrate(180);
+    if(page == 0){
+document.getElementById("page1").style.display = "block";
+document.getElementById("banner1").style.display = "none"
+document.getElementById("banner2").style.display = "none"
+document.getElementById("banner3").style.display = "none"
+document.getElementById("banner4").style.display = "none"
+}else if(page == 2){
+document.getElementById("banner1").style.display = "none"
+document.getElementById("banner2").style.display = "block"
+document.getElementById("banner3").style.display = "none"
+document.getElementById("banner4").style.display = "none"
+    }else if(page == 3){
+document.getElementById("banner1").style.display = "none"
+document.getElementById("banner2").style.display = "none"
+document.getElementById("banner3").style.display = "block"
+document.getElementById("banner4").style.display = "none"
+    }else if(page == 4){
+document.getElementById("banner1").style.display = "none"
+document.getElementById("banner2").style.display = "none"
+document.getElementById("banner3").style.display = "none"
+document.getElementById("banner4").style.display = "block"
+    }
+}
+function back(page){
+ navigator.vibrate(180);
+    if(page == 0){
+document.getElementById("page1").style.display = "block";
+document.getElementById("banner1").style.display = "none"
+document.getElementById("banner2").style.display = "none"
+document.getElementById("banner3").style.display = "none"
+document.getElementById("banner4").style.display = "none"
+    }else if(page == 1){
+document.getElementById("banner1").style.display = "block"
+document.getElementById("banner2").style.display = "none"
+document.getElementById("banner3").style.display = "none"
+document.getElementById("banner4").style.display = "none"
+    }else if(page == 2){
+document.getElementById("banner1").style.display = "none"
+document.getElementById("banner2").style.display = "block"
+document.getElementById("banner3").style.display = "none"
+document.getElementById("banner4").style.display = "none"
+    }else if(page == 3){
+document.getElementById("banner1").style.display = "none"
+document.getElementById("banner2").style.display = "none"
+document.getElementById("banner3").style.display = "block"
+document.getElementById("banner4").style.display = "none"
+    }
+}
+</script>
+</html>
