@@ -207,7 +207,7 @@ function checkiss() {
 
   function say() {
     player = player - 1;
-    const resource = createAudioResource("https://api.voicerss.org/?key=e2f105f4257e4707a3a6d42ac6a93e7b&hl=en-us&src=the iss is now at " + ttscountry, {
+    const resource = createAudioResource("https://api.voicerss.org/?key=" + process.env.TTSKEY + "&hl=en-us&src=the iss is now at " + ttscountry, {
       inputType: StreamType.Arbitrary,
       inlineVolume: true,
       bitrate: 192000
