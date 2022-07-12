@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:url"                content="https://spacecadetproject.herokuapp.com/" />
+    <meta property="og:title"              content="SpaceCadet" />
+    <meta property="og:description"        content="You are part of the universe, get to know it!" />
+    <meta property="og:image"              content="https://cdn.discordapp.com/icons/962500257986514975/20f1acc99f5d849a5a2ab3362af64b3d.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Rajdhani&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#101926">
+    <title>SpaceCadet</title>
+</head>
+<style>
+    html,body{
+        background-color: rgb(2, 2, 2);
+        margin: 0;
+        padding: none;
+        color: white; 
+  height:100%;
+    }
+    #start{
+    width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  filter: brightness(0.5);
+}
+#content{
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  text-align: center;
+  color: white;
+}
+#github{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
+}
+#wt{
+    background-color: transparent;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 25px;
+    height: 50px;
+    width: 160px;
+    color: rgb(255, 255, 255);
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+#wt:hover{
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(0.25em);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+#content2{
+    position: absolute;
+    margin-top: 100vh;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+#content2 a{
+    color: white;
+}
+#footer{
+    background-color: rgba(0, 0, 0, 1);
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    bottom: 0%;
+}
+#ye,#na{
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    display: block;
+    border-radius: 25px;
+    height: 60px;
+    width: 120px;
+    margin: 0 auto;
+    margin-top: 2%;
+}
+#ye:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#na:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+</style>
+<body>
+    <video src="/assets/bck.mp4" autoplay muted preload="metadata" loop id="start"></video>
+    <div id="content">
+        <img src="/assets/githublogo.png" id="github" onclick="window.open('https://github.com/decaffeinatedcoffee/SpaceCadet','_blank')">
+    <p style="font-family: 'Montserrat', sans-serif; font-size: 30px; margin-top: 30vh;">Welcome to the SpaceCadet!</p>
+    <p style="font-family: 'Montserrat', sans-serif; font-size: 15px;">You're part of the universe, get to know it</p>
+    <button id="wt" onclick="document.getElementById('content2').scrollIntoView({ behavior: 'smooth', block: 'center' });">What is SpaceCadet?</button>
+</div>
+<div id="content2">
+    <p style="font-family: 'Rajdhani', sans-serif; font-size: 30px; margin-top: 4%;">About SpaceCadet</p>
+<p style="font-family: 'Rajdhani', sans-serif; font-size: 3vh;">SpaceCadet is a project, a project for all those who thinks the universe and it's exploration  <br>amazing, the SpaceCadet is currently being made, the main idea, is a Discord community <br> where all people can talk, share and learn things, by now, there's no launch date but we are <br>working  on the project to make it a amazing place to be at. <br> You can see the project status on <a href="https://github.com/decaffeinatedcoffee/SpaceCadet">GitHub</a>.</p>
+<div id="footer">
+<p style="font-family: 'Rajdhani', sans-serif; font-size: 20px" id="foo">Are you very excited to this?</p>
+<div id="counter" style="display:none;">
+<p style="font-size:70px; height: 0px;" id="countert"><%-waiting%></p>
+<p style="font-size:19px;">waiting</p>
+</div>
+<ul style="font-family: 'Montserrat', sans-serif; list-style: none; position: absolute; right: 30px; bottom: 1%;">
+    <li style="font-weight: bold;">Made with ❤️ by:</li>
+    <a href="https://github.com/decaffeinatedcoffee"><li title="Front & Back end and Discord bot">decaffeinatedcoffee</li>  </a>
+    <a href="https://github.com/devsakazaki"><li title="Mobile application">Sakazaki</li></a>
+    <li title="Design" style="cursor: pointer;">hana</li>
+</ul>
+<button id="ye" onclick="yah()">Yes, add me to waitlist</button>
+<button id="na" onclick="nah()">Nah, thanks</button>
+</div>
+</div>
+</body>
+</html>
+<script>
+    let waiting = localStorage.getItem("spacecadetwait");
+    var total = "<%-waiting%>";
+    if(waiting == "true"){
+        document.getElementById("ye").style.display = "none";
+        document.getElementById("na").style.display = "none";
+        document.getElementById("counter").style.display = "block";
+        document.getElementById("foo").innerText = "Yay! you are waiting"
+    }
+    function yah(){
+        document.getElementById("ye").style.display = "none";
+        document.getElementById("na").style.display = "none";
+        document.getElementById("counter").style.display = "block";
+        document.getElementById("foo").innerText = "Yay! you were added to the wait list!"
+        total = parseInt(total) + 1;
+        document.getElementById("countert").innerText = total;
+        localStorage.setItem("spacecadetwait","true");
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/waitlist", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+       xhttp.send(JSON.stringify({"waiting":true}));
+}
+    function nah(){
+        document.getElementById("ye").style.display = "none";
+        document.getElementById("na").style.display = "none";
+        document.getElementById("counter").style.display = "block";
+        document.getElementById("foo").innerText = "It's okay, feel free to come back one day"
+    }
+</script>
